@@ -27,7 +27,6 @@ const swiper = new Swiper('.swiper', {
 });
 
 
-
 // SETTING DU BLOCNOTES
 
 const plusIcon = document.getElementById('plusIcon');
@@ -58,7 +57,7 @@ function addNote() {
         // sinon, ajoute l'anim de validation
         inputText.classList.add('anim-input-add');
 
-    // Setting du contenu de la card créé
+        // Setting du contenu de la card créé
 
         //ajout d'un p qui recoit le contenu de l'input textarea
         let newP = document.createElement('p');
@@ -177,7 +176,6 @@ document.addEventListener('click', function (e) {
     if (!e.target.classList.contains('save-button')) {
         return;
     }
-
     // je recupere le parent de mon submit button ainsi que les element du slide
     const slide = e.target.parentNode;
     const text = slide.querySelector('.card-text');
@@ -189,14 +187,12 @@ document.addEventListener('click', function (e) {
         input.style.display = 'none';
         saveButton.style.display = 'none';
         return;
-    } 
+    }
     text.textContent = input.value;
     text.style.display = 'block';
     input.style.display = 'none';
     saveButton.style.display = 'none';
 });
-
-
 
 // Suppression d'une note
 
@@ -204,16 +200,17 @@ document.addEventListener('click', function (e) {
 const crossIcon = document.getElementById('crossIcon');
 crossIcon.addEventListener('click', function () {
     if (swiper.slides.length > 0) {
-    // j'utilise removechild
-    const activeSlide = swiper.activeIndex;
-    const slideElement = swiper.slides[activeSlide];
-    const parentElement = slideElement.parentNode;
-    parentElement.removeChild(slideElement);
-    // j'utilise la method update de swiper pour actualiser la pagination et mettre à jour le dom
-    swiper.update();
+        // j'utilise removechild
+        const activeSlide = swiper.activeIndex;
+        const slideElement = swiper.slides[activeSlide];
+        const parentElement = slideElement.parentNode;
+        parentElement.removeChild(slideElement);
+        // j'utilise la method update de swiper pour actualiser la pagination et mettre à jour le dom
+        swiper.update();
     }
 });
 
+// -------------------------------WORK IN PROGRESS -------------------------------------------
 
 //setting pour agrandir la note en double cliquant dessus
 
