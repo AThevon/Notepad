@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- LINK CSS ANIMATE -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <!-- LINK CSS SWIPER.JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <!-- LINK CSS PERSO -->
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- ICON HEAD -->
+    <link rel="shortcut icon" href="img/pen-tool-svgrepo-com1.svg" type="image/x-icon">
+    <title>Bloc-Notes - AThevon</title>
+</head>
+
+<body>
+    <section class="main-bloc-notes">
+        <h1 class="main-title">BLOC-NOTES</h1>
+        <div class="main-container">
+            <div class="main-input">
+                <label for="inputText" class="main-label">Laissez libre cours à votre imagination :</label>
+                <textarea name="inputText" id="inputText" class="main-text-area" cols="50" rows="18" placeholder="Entrez votre idée ici"></textarea>
+            </div>
+            <div class="main-icon">
+                <img src="img/plus-img.svg" alt="Icone d'ajout" id="plusIcon" class="icon">
+                <br>
+                <img src="img/trash-solid.svg" alt="Icone de suppression totale" id="trashIcon" class="icon">
+            </div>
+            <div class="secondary-icon">
+                <img src="img/message-edit-svgrepo-com.svg" alt="Icone de modification" id="modifIcon" class="icon icon-secondary">
+                <img src="img/cross-svgrepo-com.svg" alt="Icone de suppression unitaire" id="crossIcon" class="icon icon-secondary">
+            </div>
+            <div class="swiper">
+                <p class="text-empty">Vos notes apparaîtront ici</p>
+                <ul id="mainUl" class="swiper-wrapper bg-slide">
+                </ul>
+            </div>
+            <ul class="swiper-pagination index-container"></ul>
+        </div>
+    </section>
+
+    <!-- SCRIPT JS SWIPER.JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <!-- MON SCRIPT -->
+    <script src="script.js"></script>
+</body>
+
+</html>
