@@ -1,3 +1,11 @@
+/* SETTING DES COULEURS */
+:root {
+    --black: #232323;
+    --white: #f9f9f9;
+    --grey: rgba(255, 255, 255, 0.2);
+}
+
+
 * {
     font-family: 'Montserrat', sans-serif;
 }
@@ -7,18 +15,20 @@ body {
 }
 
 
-section {
+section.main-bloc-notes {
     background: linear-gradient(-45deg, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
     height: 100vh;
-    color: #f9f9f9;
+    color: var(--white);
     font-family: sans-serif;
     display: flex;
     flex-direction: column;
     text-align: center;
-    padding: 5rem;
+    padding-block: 5rem;
     background-size: 400% 400%;
     -webkit-animation: 'gradient' 180s ease infinite;
     animation: 'gradient' 180s ease infinite;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -50,9 +60,53 @@ section {
     }
 }
 
+.container-logo {
+    position: relative;
+    margin-block: 2rem;
+    padding-right: 1rem;
+}
+
+.main-logo {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    width: 6rem;
+    height: 6rem;
+}
+
+.bg-logo {
+    background-color:var(--grey);
+    border-radius: 50%;
+    width: 6rem;
+    height: 6rem;
+    margin-bottom: .8rem;
+    background-color: var(--grey);
+    background-image: -webkit-linear-gradient(-30deg, var(--black) 50%, transparent 50%);
+    background-image: linear-gradient(-30deg, var(--black) 50%, transparent 50%);
+    background-size: 500px;
+    background-repeat: no-repeat;
+    background-position: 0%;
+    -webkit-transition: background 300ms ease-in-out;
+    transition: background 300ms ease-in-out;
+    transition: .7s;
+}
+
+.container-logo:hover .main-logo {
+    animation: wobble;
+    animation-duration: 1s;
+}
+
+.container-logo:hover .bg-logo {
+    background-position: 100%;
+    -webkit-box-shadow: 5px 5px 10px 8px rgba(0, 0, 0, 0.4);
+    box-shadow: 5px 5px 10px 8px rgba(0, 0, 0, 0.4);
+}
+
+
 .main-container {
     display: flex;
-    margin: 5rem 2rem;
+    margin-block: 5rem ;
+    gap: 1rem;
 }
 
 .main-input {
@@ -60,7 +114,6 @@ section {
     flex-direction: column;
     border-radius: 1rem;
     transition: .1s;
-
 }
 
 .swiper {
@@ -68,13 +121,13 @@ section {
     height: 35rem;
     margin-left: 10rem;
     border-radius: 100px;
-    outline: dashed 10px rgba(255, 255, 255, 0.2);
+    outline: dashed 10px var(--grey);
     outline-offset: -50px;
 }
 
 
 .main-label {
-    background-color:rgba(255, 255, 255, 0.2);
+    background-color:var(--grey);
     padding: 1rem;
     border-radius: 1rem 1rem 0 0;
     font-size: 1.2rem;
@@ -87,7 +140,7 @@ section {
     padding: 1rem;
     padding-top: 2rem;
     border-radius: 0 0 10px 10px;
-    background-color: #232323;
+    background-color: var(--black);
     color: white;
     border: none;
     transition: .3s;
@@ -97,8 +150,8 @@ section {
 }
 
 .main-text-area:focus {
-    background-color: #f9f9f9;
-    color: #232323;
+    background-color: var(--white);
+    color: var(--black);
     outline: none;
     scale: 1.05;
 }
@@ -169,36 +222,36 @@ img.icon:hover {
 
 @-webkit-keyframes hover-outline {
     0% {
-        outline: 0px solid #f9f9f9;
+        outline: 0px solid var(--white);
     }
 
     50% {
-        outline: 5px solid #f9f9f9;
+        outline: 5px solid var(--white);
     }
 
     100% {
-        outline: 2px solid #f9f9f9;
+        outline: 2px solid var(--white);
     }
 }
 
 @keyframes hover-outline {
     0% {
-        outline: 0px solid #f9f9f9;
+        outline: 0px solid var(--white);
     }
 
     50% {
-        outline: 5px solid #f9f9f9;
+        outline: 5px solid var(--white);
     }
 
     100% {
-        outline: 2px solid #f9f9f9;
+        outline: 2px solid var(--white);
     }
 }
 
 
 .swiper-slide {
     color: black;
-    background-color: #f9f9f9;
+    background-color: var(--white);
     border-radius: 5px;
     padding: 2rem 3rem;
     text-align: start;
@@ -215,8 +268,8 @@ img.icon:hover {
 #bg-slide {
     position: absolute;
     padding-top: 10rem;
-    background-color: #232323;
-    color: #f9f9f9;
+    background-color: var(--black);
+    color: var(--white);
 }
 
 .text-empty {
@@ -225,7 +278,7 @@ img.icon:hover {
     width: 16rem;
     margin-left: 4.5rem;
     margin-top: 12rem;
-    color:rgba(255, 255, 255, 0.2);
+    color:var(--grey);
 }
 
 .swiper-pagination-bullets {
@@ -247,7 +300,7 @@ ul.index-container li {
     height: 3rem;
     border-radius: 10px;
     background-color: #fff;
-    color: #232323;
+    color: var(--black);
     font-weight: 600;
 }
 
@@ -306,8 +359,8 @@ ul.index-container li {
     -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.3); 
     box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.3);
     border-radius: 5px;
-    background-color: #f9f9f9;
-    color: #232323;
+    background-color: var(--white);
+    color: var(--black);
     border: none;
     outline: none;
     transform: translateY(-5rem) translateX(-1rem);
@@ -323,11 +376,11 @@ ul.index-container li {
     font-weight: 700;
     text-align: center;
     border-radius: 50px;
-    color: var(--white);
-    background-color: #232323;
-    border: 2px solid #232323;
-    background-image: -webkit-linear-gradient(30deg, #f9f9f9 50%, transparent 50%);
-    background-image: linear-gradient(30deg, #f9f9f9 50%, transparent 50%);
+    color: var(--black);
+    background-color: var(--black);
+    border: 2px solid var(--black);
+    background-image: -webkit-linear-gradient(30deg, var(--white) 50%, transparent 50%);
+    background-image: linear-gradient(30deg, var(--white) 50%, transparent 50%);
     background-size: 500px;
     background-repeat: no-repeat;
     background-position: 0%;
@@ -339,12 +392,12 @@ ul.index-container li {
 
 .save-button:hover {
     background-position: 100%;
-    color: #f9f9f9;
+    color: var(--white);
     -webkit-box-shadow: 5px 5px 15px 3px rgba(0, 0, 0, 0.4);
     box-shadow: 5px 5px 15px 3px rgba(0, 0, 0, 0.4);
 }
 
-
+/* ----------------WORK IN PROGRESS-------------------- */
 /* Agrandissement de la card active  */
 
 .large {

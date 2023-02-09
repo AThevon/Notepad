@@ -21,10 +21,12 @@ const swiper = new Swiper('.swiper', {
         clickable: true,
         renderBullet: function (index, className) {
             var totalSlides = this.slides.length;
-            return '<li class="' + className + '">Notes ' + (totalSlides - index) + '</li>';
+            return '<li class="' + className + '"><span class="title-note">Notes ' + (totalSlides - index) + '</span></li>';
         }
     },
 });
+
+
 
 
 // SETTING DU BLOCNOTES
@@ -182,7 +184,7 @@ document.addEventListener('click', function (e) {
     const input = slide.querySelector('.card-input');
     const saveButton = slide.querySelector('.save-button');
 
-    //je remplace le text et je fait disparaitre mes 'ghost' elements
+    //je remplace le text et je fais disparaitre mes 'ghost' elements
     if (!input.value) {
         input.style.display = 'none';
         saveButton.style.display = 'none';
@@ -219,6 +221,18 @@ slides.forEach(function (slide) {
     slide.addEventListener('dblclick', function () {
         if (slide.classList.contains('swiper-slide-active')) {
             slide.classList.toggle('large');
+        }
+    });
+});
+
+
+// setting pour modifier le titre de la note
+const paginationItems = document.querySelectorAll('.swiper-pagination li');
+paginationItems.forEach(item => {
+    item.addEventListener('click', function (e) {
+        if (e.target.classList.contains('swiper-pagination-bullet-active')) {
+            const newTitle = this.querySelector('.title-note');
+            newTitle.textContent = 'New text';
         }
     });
 });
