@@ -1,5 +1,4 @@
-
-// SWIPERS.JS 
+// SWIPERS.JS pour les cards
 const swiper = new Swiper('.swiper', {
     // Optional parameters
     effect: 'cards',
@@ -21,12 +20,47 @@ const swiper = new Swiper('.swiper', {
         clickable: true,
         renderBullet: function (index, className) {
             var totalSlides = this.slides.length;
-            return '<li class="' + className + '"><span class="title-note">Notes ' + (totalSlides - index) + '</span></li>';
+            if (totalSlides > 0) {
+                return '<li class="' + className + '">Notes ' + (totalSlides - index) + '</li>';
+            } else {
+                return '';
+            }
         }
     },
+    
 });
 
 
+// Setting du bouton landing
+const btnLanding = document.getElementById('btnLanding');
+btnLanding.addEventListener('click', function () {
+    btnLanding.style.transform = 'translateY(-200px) translateX(500px)';
+    btnLanding.style.transition = '2s';
+    btnLanding.style.scale = '1.3';
+    btnLanding.style.backgroundcolor = '#232323';
+    // Mise en place d'un délai pour scroll après que la "lune" se soit déplacé (et reset de la lune)"
+    let delay = 2200;
+    setTimeout(function () {
+        window.scroll({
+        top: window.innerHeight,
+        left: 100,
+        behavior: 'smooth'
+    });
+    btnLanding.style.transform = 'translateY(0) translateX(0)';
+    btnLanding.style.scale = '1';
+    btnLanding.style.transition = '.6s';
+    }, delay);
+});
+
+// Setting du bouton logo pour remonter sur le landing
+const logoBtn = document.getElementById('logoBtn');
+logoBtn.addEventListener('click', function () {
+    window.scroll({
+        top: -window.innerHeight,
+        left: 100,
+        behavior: 'smooth'
+    });
+})
 
 
 // SETTING DU BLOCNOTES
@@ -36,8 +70,8 @@ const trashIcon = document.getElementById('trashIcon');
 
 const mainUl = document.getElementById('mainUl');
 const allInput = document.querySelector('.main-input')
-const inputText = document.getElementById('inputText');
 const mainLabel = document.querySelector('.main-label')
+const inputText = document.getElementById('inputText');
 
 
 // Bouton pour ajouter des notes
@@ -59,8 +93,8 @@ function addNote() {
         // sinon, ajoute l'anim de validation
         inputText.classList.add('anim-input-add');
 
-        // Setting du contenu de la card créé
-
+    
+    // Setting du contenu de la card créé
         //ajout d'un p qui recoit le contenu de l'input textarea
         let newP = document.createElement('p');
         newP.classList.add("card-text");
@@ -148,18 +182,16 @@ inputText.addEventListener("blur", function () {
 
 
 // Modification d'une note
-const allCards = document.querySelectorAll('.swiper-slide');
-
 
 // Pour chaque slide, je veux faire apparraitre mon textarea et monbouton sumbit du dessus (forEach)
+const allCards = document.querySelectorAll('.swiper-slide');
 allCards.forEach(card => {
     //listener qui s'active pour chaque card
     card.addEventListener('click', function () {
-        // j'utilise un tableau vide pour instance avec la method indexOf, et j'utilise call pour indiquer le contexte de mon indexOf : comme ça 'this' fait référence à toutes mes cartes (allCards), et le résultat est la position de card dans mon tableau allCards
+        // je compare a la position de card dans allCards
         if (swiper.activeIndex !== [].indexOf.call(allCards, card)) {
             return; // je coupe la fonction si mon activeIndex n'est pas strictement égal à la position de ma card
         }
-
         // je restylise mes 'ghost' elements
         const text = this.querySelector('.card-text');
         const input = this.querySelector('.card-input');
@@ -215,24 +247,3 @@ crossIcon.addEventListener('click', function () {
 // -------------------------------WORK IN PROGRESS -------------------------------------------
 
 //setting pour agrandir la note en double cliquant dessus
-
-const slides = document.querySelectorAll('.swiper-slide');
-slides.forEach(function (slide) {
-    slide.addEventListener('dblclick', function () {
-        if (slide.classList.contains('swiper-slide-active')) {
-            slide.classList.toggle('large');
-        }
-    });
-});
-
-
-// setting pour modifier le titre de la note
-const paginationItems = document.querySelectorAll('.swiper-pagination li');
-paginationItems.forEach(item => {
-    item.addEventListener('click', function (e) {
-        if (e.target.classList.contains('swiper-pagination-bullet-active')) {
-            const newTitle = this.querySelector('.title-note');
-            newTitle.textContent = 'New text';
-        }
-    });
-});
