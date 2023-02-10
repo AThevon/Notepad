@@ -33,35 +33,52 @@ const swiper = new Swiper('.swiper', {
 
 // Setting du bouton landing
 const btnLanding = document.getElementById('btnLanding');
+const invisibleHeader = document.querySelector('.invisible-header');
+const svgBg = document.querySelector('.svg-bg');
+const mainH1 = document.getElementById('mainH1')
+const spanH1 = document.getElementById('spanH1')
+
 btnLanding.addEventListener('click', function () {
-    btnLanding.style.transform = 'translateY(-200px) translateX(500px)';
+    btnLanding.style.transform = 'translateY(-200px) translateX(500px) scale(1.3)';
     btnLanding.style.transition = '2s';
-    btnLanding.style.scale = '1.3';
-    btnLanding.style.backgroundcolor = '#232323';
-    // Mise en place d'un délai pour scroll après que la "lune" se soit déplacé (et reset de la lune)"
-    let delay = 2200;
     setTimeout(function () {
-        window.scroll({
-        top: window.innerHeight,
-        left: 100,
-        behavior: 'smooth'
-    });
-    btnLanding.style.transform = 'translateY(0) translateX(0)';
-    btnLanding.style.scale = '1';
-    btnLanding.style.transition = '.6s';
-    }, delay);
+        spanH1.style.left = '-40%';
+    }, 1000)
+    setTimeout(function () {
+        spanH1.style.left = '0';
+    }, 1600);
+    setTimeout(function () {
+        spanH1.style.opacity = '0';
+    }, 2200);
+    setTimeout(function () {
+        mainH1.style.opacity = '0';
+    }, 2600);
+    setTimeout(function () {
+        invisibleHeader.style.height = '50px';
+        svgBg.style.bottom = '-10rem';
+    }, 3000);
+    setTimeout(function () {
+        const br = document.querySelector("br");
+        br.parentNode.removeChild(br);
+        spanH1.style.display = 'none';
+        mainH1.style.top = '10px';
+        mainH1.style.right = '2%';
+        mainH1.style.opacity = '1';
+        // btnLanding.style.transform = 'translateY(0) translateX(0)';
+        // btnLanding.style.scale = '1';
+        // btnLanding.style.transition = '.6s'
+        // btnLanding.style.scale = '0'
+    }, 5000);
 });
 
 // Setting du bouton logo pour remonter sur le landing
-const logoBtn = document.getElementById('logoBtn');
-logoBtn.addEventListener('click', function () {
-    window.scroll({
-        top: -window.innerHeight,
-        left: 100,
-        behavior: 'smooth'
-    });
-})
-
+// const logoBtn = document.getElementById('logoBtn');
+// logoBtn.addEventListener('click', function () {
+//     invisibleHeader.style.height = '100vh'
+//     setTimeout(function () {
+//         btnLanding.style.scale = '1';
+//     }, 1000);
+// })
 
 // SETTING DU BLOCNOTES
 
@@ -181,6 +198,7 @@ inputText.addEventListener("blur", function () {
 });
 
 
+
 // Modification d'une note
 
 // Pour chaque slide, je veux faire apparraitre mon textarea et monbouton sumbit du dessus (forEach)
@@ -228,6 +246,7 @@ document.addEventListener('click', function (e) {
     saveButton.style.display = 'none';
 });
 
+
 // Suppression d'une note
 
 //je set le bouton qui supprime la card active
@@ -247,3 +266,5 @@ crossIcon.addEventListener('click', function () {
 // -------------------------------WORK IN PROGRESS -------------------------------------------
 
 //setting pour agrandir la note en double cliquant dessus
+
+
